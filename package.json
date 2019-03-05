@@ -1,0 +1,19 @@
+{
+  "name": "markov",
+  "version": "1.0.0",
+  "description": "",
+  "main": "makeText.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ValkrynCiel/Markov_Machine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ValkrynCiel/Markov_Machine/issues"
+  },
+  "homepage": "https://github.com/ValkrynCiel/Markov_Machine#readme"
+}
