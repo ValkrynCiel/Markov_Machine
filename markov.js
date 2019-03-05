@@ -49,22 +49,30 @@ class MarkovMachine {
     let markovObj = this.makeChains();
     let markovKeys = Object.keys(markovObj);
 
-    // picking a random key from Keys array.
-    let keysIdx = Math.floor(Math.random() * markovKeys.length);
-    let key = markovKeys[keysIdx];
-    
-    // adding the value of the random key to the outSt
-    let outStr = `${key}`;
+    let key;
 
-    for (let i=1; i<numWords; i++) {
+    let outStr = '';
+
+    for (let i=0; i<numWords; i++) {
+
+      if (!key){
+        // randomize key for the first loop, add key to string then continue loop
+        let keysIdx = Math.floor(Math.random() * markovKeys.length);
+        key = markovKeys[keysIdx];
+        outStr += `${key}`
+        continue;
+      }
       
       // make a random call on the random-key value array
       let valuesIdx = Math.floor(Math.random() * markovObj[key].length);
       let value = markovObj[key][valuesIdx];
+
       if (!value){
         break;
       }
+
       outStr += ` ${value}`;
+      //reset key
       key = value; 
     } 
   return outStr;
