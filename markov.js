@@ -44,24 +44,32 @@ class MarkovMachine {
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    // create a keys array from markovChains 
-      let markovObj = this.makeChains();
-      console.log("markovObj= ",markovObj);
-      let markovKeys = Object.keys(markovObj);
 
-      // make a random call on the keys array
-      let keysIdx = Math.floor(Math.random() * markovKeys.length);
-      let key = markovKeys[keysIdx];
-      console.log("key=", key);
+    // call markovChains and create a keys array
+    let markovObj = this.makeChains();
+    let markovKeys = Object.keys(markovObj);
+
+    // picking a random key from Keys array.
+    let keysIdx = Math.floor(Math.random() * markovKeys.length);
+    let key = markovKeys[keysIdx];
+    
+    // adding the value of the random key to the outSt
+    let outStr = `${key}`;
+
+    for (let i=1; i<numWords; i++) {
       
       // make a random call on the random-key value array
-      console.log("markovObj[key]= ", markovObj[key]);
       let valuesIdx = Math.floor(Math.random() * markovObj[key].length);
       let value = markovObj[key][valuesIdx];
-      
-      console.log("key:value ", key, value);
-
+      if (!value){
+        break;
+      }
+      outStr += ` ${value}`;
+      key = value; 
+    } return outStr;
   }
 }
-let test = new MarkovMachine("The cat in the hat the cat in the hat");
-test.makeText();
+// let test = new MarkovMachine("The cat in the hat is in the hat");
+// test.makeText();
+
+module.exports = MarkovMachine
