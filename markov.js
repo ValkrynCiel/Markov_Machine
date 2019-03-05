@@ -22,19 +22,19 @@ class MarkovMachine {
     let words = this.words;
 
     for (let i = 0; i < words.length; i++){
-    
+      
+      let pushedValue = words[i+1] ? words[i+1] : null
       // if there is no value set, create array, else push word into array
       if (markovChains[words[i]]){
 
-        markovChains[words[i]].push(words[i+1]);
+        markovChains[words[i]].push(pushedValue);
         
       } else {
 
-        markovChains[words[i]] = [];
-        markovChains[words[i]].push(words[i+1]);
-        
+        markovChains[words[i]] = [pushedValue];
+
       }
-      // markovChains[words[i]] = markovChains[words[i]] ? markovChains[words[i]].push(words[i+1]) : new Array().push(words[i])
+      // markovChains[words[i]] = markovChains[words[i]] ? markovChains[words[i]].push(words[i+1]) : [words[i+1]]
       
     }
     return markovChains;
@@ -66,8 +66,10 @@ class MarkovMachine {
       }
       outStr += ` ${value}`;
       key = value; 
-    } return outStr;
+    } 
+  return outStr;
   }
+  
 }
 // let test = new MarkovMachine("The cat in the hat is in the hat");
 // test.makeText();
