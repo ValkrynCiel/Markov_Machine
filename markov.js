@@ -37,15 +37,31 @@ class MarkovMachine {
       // markovChains[words[i]] = markovChains[words[i]] ? markovChains[words[i]].push(words[i+1]) : new Array().push(words[i])
       
     }
-    console.log(markovChains);
+    return markovChains;
+    // console.log(markovChains);
   }
-  
-
 
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    // TODO
+    // create a keys array from markovChains 
+      let markovObj = this.makeChains();
+      console.log("markovObj= ",markovObj);
+      let markovKeys = Object.keys(markovObj);
+
+      // make a random call on the keys array
+      let keysIdx = Math.floor(Math.random() * markovKeys.length);
+      let key = markovKeys[keysIdx];
+      console.log("key=", key);
+      
+      // make a random call on the random-key value array
+      console.log("markovObj[key]= ", markovObj[key]);
+      let valuesIdx = Math.floor(Math.random() * markovObj[key].length);
+      let value = markovObj[key][valuesIdx];
+      
+      console.log("key:value ", key, value);
+
   }
 }
 let test = new MarkovMachine("The cat in the hat the cat in the hat");
+test.makeText();
