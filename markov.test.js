@@ -37,5 +37,13 @@ describe("ClassMarkovMachine", function(){
         //five words with four spaces
         expect(testInstance.makeText(5).length).toBeLessThanOrEqual(9)
     })
+    
+    it("always ends with the last character/word of the input", () => {
+
+        testInstance = new MM("a b c d");
+        const text = testInstance.makeText();
+        const lastIdx = (text.length - 1) 
+        expect(text[lastIdx]).toEqual("d");
+    });
 
 })

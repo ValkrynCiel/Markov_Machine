@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/ValkrynCiel/Markov_Machine/issues"
   },
-  "homepage": "https://github.com/ValkrynCiel/Markov_Machine#readme"
+  "homepage": "https://github.com/ValkrynCiel/Markov_Machine#readme",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "fs": "0.0.1-security"
+  }
 }
