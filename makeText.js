@@ -12,7 +12,7 @@ function cat(path) {
       console.error(`Error reading ${path}: ${err}`);
       process.exit(1);
     } else {
-      console.log(data);
+      console.log(new MM(data).makeText());
     }
   });
 }
@@ -22,7 +22,7 @@ function cat(path) {
 async function webCat(url) {
   try {
     let resp = await axios.get(url);
-    console.log(resp.data);
+    console.log(new MM(resp.data).makeText());
   } catch (err) {
     console.error(`Error fetching ${url}: ${err}`);
     process.exit(1);
